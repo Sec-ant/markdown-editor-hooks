@@ -1,0 +1,135 @@
+{
+  "name": "markdown-editor-hooks",
+  "description": "Helper react hooks for implementing a wysiwyg markdown editor based on prosemirror",
+  "private": false,
+  "version": "0.1.0",
+  "type": "module",
+  "files": [
+    "./dist"
+  ],
+  "main": "./dist/cjs/hooks/index.js",
+  "module": "./dist/es/hooks/index.js",
+  "imports": {
+    "#*": "./src/*.js"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/es/hooks/index.js",
+      "require": "./dist/cjs/hooks/index.js",
+      "default": "./dist/es/hooks/index.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sec-ant/markdown-editor-hooks.git"
+  },
+  "homepage": "https://github.com/Sec-ant/markdown-editor-hooks",
+  "bugs": {
+    "url": "https://github.com/Sec-ant/markdown-editor-hooks/issues",
+    "email": "zezhengwu@proton.me"
+  },
+  "keywords": [
+    "react",
+    "hooks",
+    "remark",
+    "unified",
+    "markdown",
+    "markdown-editor",
+    "editor",
+    "wysiwyg",
+    "prosemirror"
+  ],
+  "author": {
+    "name": "Ze-Zheng Wu"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "update-hooks": "simple-git-hooks",
+    "dev": "vite",
+    "lint": "eslint .",
+    "type-check": "tsc -p ./tsconfig.lib.json --noEmit --emitDeclarationOnly false",
+    "format": "pretty-quick",
+    "check": "pnpm -s lint --fix && pnpm -s format",
+    "clear:dist": "rimraf dist",
+    "prebuild": "pnpm -s check && pnpm -s type-check && pnpm -s clear:dist",
+    "build:es": "vite build",
+    "build:cjs": "tsx ./scripts/build-cjs.ts",
+    "build": "conc \"pnpm:build:es\" \"pnpm:build:cjs\"",
+    "postbuild:es": "tsc -p ./tsconfig.lib.json --declarationDir ./dist/es",
+    "postbuild:cjs": "tsc -p ./tsconfig.lib.json --declarationDir ./dist/cjs",
+    "preview": "vite preview",
+    "prepublishOnly": "pnpm -s build"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@handlewithcare/react-prosemirror": "^2.2.1",
+    "@material-symbols/svg-400": "^0.28.1",
+    "@mui/icons-material": "^6.4.3",
+    "@mui/material": "^6.4.3",
+    "material-symbols": "^0.28.1",
+    "prosemirror-commands": "^1.6.2",
+    "prosemirror-history": "^1.4.1",
+    "prosemirror-keymap": "^1.2.2",
+    "prosemirror-model": "^1.24.1",
+    "prosemirror-remark": "^0.6.1",
+    "prosemirror-schema-list": "^1.5.0",
+    "prosemirror-state": "^1.4.3",
+    "prosemirror-unified": "^0.8.1",
+    "prosemirror-view": "1.37.2",
+    "react": "^18.3.1",
+    "react-compiler-runtime": "19.0.0-beta-714736e-20250131",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.12",
+    "@eslint/js": "^9.19.0",
+    "@svgr/plugin-jsx": "^8.1.0",
+    "@svgr/plugin-svgo": "^8.1.0",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "@types/node": "^22.13.1",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "babel-plugin-react-compiler": "19.0.0-beta-714736e-20250131",
+    "concurrently": "^9.1.2",
+    "eslint": "^9.19.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-react-compiler": "19.0.0-beta-714736e-20250131",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.18",
+    "globals": "^15.14.0",
+    "lint-staged": "^15.4.3",
+    "prettier": "3.4.2",
+    "pretty-quick": "^4.0.0",
+    "rimraf": "^6.0.1",
+    "simple-git-hooks": "^2.11.1",
+    "tsx": "^4.19.2",
+    "typescript": "~5.7.3",
+    "typescript-eslint": "^8.23.0",
+    "vite": "^6.1.0",
+    "vite-plugin-externalize-deps": "^0.9.0",
+    "vite-plugin-svgr": "^4.3.0"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "prosemirror-unified": "patches/prosemirror-unified.patch",
+      "prosemirror-remark": "patches/prosemirror-remark.patch"
+    },
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "react": "18",
+        "@handlewithcare/react-prosemirror@2.2.1>prosemirror-view": "1.37.2",
+        "@handlewithcare/react-prosemirror@2.2.1>react": "18"
+      }
+    },
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "simple-git-hooks"
+    ]
+  },
+  "packageManager": "pnpm@10.2.0+sha512.0d27364e0139c6aadeed65ada153135e0ca96c8da42123bd50047f961339dc7a758fc2e944b428f52be570d1bd3372455c1c65fa2e7aa0bfbf931190f9552001"
+}
