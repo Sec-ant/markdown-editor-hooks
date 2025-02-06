@@ -2,7 +2,7 @@
   "name": "markdown-editor-hooks",
   "description": "Helper react hooks for implementing a wysiwyg markdown editor based on prosemirror",
   "private": false,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "files": [
     "./dist"
