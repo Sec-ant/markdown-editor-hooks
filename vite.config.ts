@@ -1,4 +1,3 @@
-// import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import { externalizeDeps } from "vite-plugin-externalize-deps";
 import svgr from "vite-plugin-svgr";
@@ -24,17 +23,5 @@ export default defineConfig({
         },
       },
     }),
-    // react({
-    //   babel: {
-    //     plugins: [
-    //       [
-    //         "babel-plugin-react-compiler",
-    //         {
-    //           target: "18",
-    //         },
-    //       ],
-    //     ],
-    //   },
-    // }),
   ],
 });
